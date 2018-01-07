@@ -19,3 +19,9 @@ or
 ```bash
 ./duration 1990-01-01
 ```
+
+or
+
+```bash
+Rscript duration.R 1990-01-01
+```
