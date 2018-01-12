@@ -16,9 +16,17 @@ if (length(dates) == 0) {
         time_diff = Sys.Date() - lubridate::ymd(date_base)
     } else {parser_error = TRUE}
 } else if (length(dates) == 1) {
-    time_diff = Sys.Date() - lubridate::ymd(dates[1])
+    if (is.na(suppressWarnings(lubridate::ymd(dates[1])))) {
+        parser_error = TRUE
+    } else {
+        time_diff = Sys.Date() - lubridate::ymd(dates[1])
+    }
 } else {
-    time_diff = lubridate::ymd(dates[2]) - lubridate::ymd(dates[1])
+    if (any(is.na(suppressWarnings(lubridate::ymd(dates[1:2]))))) {
+        parser_error = TRUE
+    } else {
+        time_diff = lubridate::ymd(dates[2]) - lubridate::ymd(dates[1])
+    }
 }
 
 if (parser_error) {
