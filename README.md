@@ -10,18 +10,32 @@ The following is an example:
 Use the script
 --------------
 
-```bash
-./duration
-```
+1. calculate how many days have past since a specified date (e.g. your birthday)
 
-or
+    ```bash
+    Rscript duration.R
+    ```
 
-```bash
-./duration 1990-01-01
-```
+    or
 
-or
+    ```bash
+    Rscript duration.R 1990-01-01
+    ```
 
-```bash
-Rscript duration.R 1990-01-01
-```
+    or
+
+    ```bash
+    Rscript duration.R -v 1990-01-01
+    ```
+
+2. get the date of a specified date plus some days
+
+    ```bash
+    Rscript future.R 10000
+    ```
+
+    or
+
+    ```bash
+    Rscript future.R 1990-01-01 10000
+    ```
