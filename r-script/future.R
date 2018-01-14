@@ -1,11 +1,16 @@
 dates = commandArgs(TRUE)
 
 error <- FALSE
-if (length(dates) == 0) {
-    error = TRUE
-} else if (length(dates) == 1) {
-    if (file.exists('BASE') && stringr::str_detect(dates[1], '^-?[1-9][0-9]*$')) {
+if (length(dates) <= 1) {
+    if (file.exists('BASE')) {
         date_base = lubridate::ymd(readLines('BASE'))
+    } else {
+        error = TRUE
+    }
+
+    if (length(dates) == 0) {
+        date_offset = 10000
+    } else if (stringr::str_detect(dates[1], '^-?[1-9][0-9]*$')){
         date_offset = as.integer(dates[1])
     } else {
         error = TRUE
