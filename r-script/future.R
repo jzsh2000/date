@@ -2,7 +2,7 @@ dates = commandArgs(TRUE)
 
 error <- FALSE
 if (length(dates) == 0) {
-    glue::glue('Rscript future.R <date_base> <dates>')
+    error = TRUE
 } else if (length(dates) == 1) {
     if (file.exists('BASE') && stringr::str_detect(dates[1], '^-?[1-9][0-9]*$')) {
         date_base = lubridate::ymd(readLines('BASE'))

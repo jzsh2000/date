@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+Rscript r-script/future.R $@
