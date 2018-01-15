@@ -1,11 +1,18 @@
 dates = commandArgs(TRUE)
 
-error <- FALSE
+if ('-v' %in% dates) {
+    verbose = TRUE
+    dates = dates[-match('-v', dates)]
+} else {
+    verbose = FALSE
+}
+
+parser_error <- FALSE
 if (length(dates) <= 1) {
     if (file.exists('BASE')) {
         date_base = lubridate::ymd(readLines('BASE'))
     } else {
-        error = TRUE
+        parser_error = TRUE
     }
 
     if (length(dates) == 0) {
@@ -13,20 +20,31 @@ if (length(dates) <= 1) {
     } else if (stringr::str_detect(dates[1], '^-?[1-9][0-9]*$')){
         date_offset = as.integer(dates[1])
     } else {
-        error = TRUE
+        parser_error = TRUE
     }
 } else {
     if (stringr::str_detect(dates[2], '^-?[1-9][0-9]*$')) {
         date_base = lubridate::ymd(dates[1])
         date_offset = as.integer(dates[2])
     } else {
-        error = TRUE
+        parser_error = TRUE
     }
 }
 
-if (!error) {
-    glue::glue("{lubridate::ymd(date_base) + as.integer(date_offset)}")
-} else {
+if (parser_error) {
     glue::glue('Rscript future.R <date_base> <date_offset>
                e.g. Rscript future.R 1990-01-01 10000')
+} else {
+    if (!verbose) {
+        glue::glue("{lubridate::ymd(date_base) + as.integer(date_offset)}")
+    } else {
+        time_diff = lubridate::ymd(date_base) + as.integer(date_offset) - Sys.Date()
+        if (time_diff < 0) {
+            glue::glue('{-time_diff} days earlier')
+        } else if (time_diff > 0) {
+            glue::glue('{time_diff} days from now')
+        } else {
+            glue::glue('today')
+        }
+    }
 }
