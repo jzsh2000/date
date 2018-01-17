@@ -8,16 +8,18 @@ if ('-v' %in% dates) {
 }
 
 parser_error <- FALSE
+base_file = file.path(here::here(), 'BASE')
+
 if (length(dates) <= 1) {
-    if (file.exists('BASE')) {
-        date_base = lubridate::ymd(readLines('BASE'))
+    if (file.exists(base_file)) {
+        date_base = lubridate::ymd(readLines(base_file))
     } else {
         parser_error = TRUE
     }
 
     if (length(dates) == 0) {
         date_offset = 10000
-    } else if (stringr::str_detect(dates[1], '^-?[1-9][0-9]*$')){
+    } else if (stringr::str_detect(dates[1], '^-?[1-9][0-9]*$')) {
         date_offset = as.integer(dates[1])
     } else {
         parser_error = TRUE

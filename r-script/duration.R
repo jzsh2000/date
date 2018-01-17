@@ -9,10 +9,11 @@ if ('-v' %in% dates) {
 
 parser_error = FALSE
 time_diff = as.difftime(0, units = 'days')
+base_file = file.path(here::here(), 'BASE')
 
 if (length(dates) == 0) {
-    if (file.exists('BASE')) {
-        date_base = readLines('BASE')
+    if (file.exists(base_file)) {
+        date_base = readLines(base_file)
         time_diff = Sys.Date() - lubridate::ymd(date_base)
     } else {parser_error = TRUE}
 } else if (length(dates) == 1) {

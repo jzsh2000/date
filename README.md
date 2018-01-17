@@ -39,3 +39,12 @@ Use the script
     ```bash
     ./future 1990-01-01 10000
     ```
+
+Dependencies
+------------
+
+R packages:
+
+* [lubridate](https://github.com/tidyverse/lubridate)
+* [glue](https://github.com/tidyverse/glue)
+* [here](https://github.com/krlmlr/here)
