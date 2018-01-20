@@ -12,32 +12,44 @@ Use the script
 
 1. calculate how many days have past since a specified date (e.g. your birthday)
 
+    ### number of days past since the `BASE` date
     ```bash
     ./duration
     ```
 
     or
 
+    ### number of days past since 1990-01-01
     ```bash
     ./duration 1990-01-01
     ```
 
     or
 
+    ### number of weeks and days past since 1990-01-01
     ```bash
     ./duration -v 1990-01-01
     ```
 
 2. get the date of a specified date plus some days
 
+    ### 10000 days after the `BASE` date
     ```bash
     ./future 10000
     ```
 
     or
 
+    ### 10000 days after 1990-01-01
     ```bash
-    ./future 1990-01-01 10000
+    ./future 1990-01-01
+    ```
+
+    or
+
+    ### 20000 days after 1990-01-01
+    ```bash
+    ./future 1990-01-01 20000
     ```
 
 Dependencies

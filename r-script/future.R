@@ -19,10 +19,15 @@ if (length(dates) <= 1) {
 
     if (length(dates) == 0) {
         date_offset = 10000
-    } else if (stringr::str_detect(dates[1], '^-?[1-9][0-9]*$')) {
-        date_offset = as.integer(dates[1])
     } else {
-        parser_error = TRUE
+        if (stringr::str_detect(dates[1], '^-?[1-9][0-9]*$')) {
+            date_offset = as.integer(dates[1])
+        } else if (!is.na(suppressWarnings(lubridate::ymd(dates[1])))) {
+            date_base = lubridate::ymd(dates[1])
+            date_offset = 10000
+        } else {
+            parser_error = TRUE
+        }
     }
 } else {
     if (stringr::str_detect(dates[2], '^-?[1-9][0-9]*$')) {
