@@ -83,7 +83,8 @@ if (length(dates) == 0) {
 }
 
 if (parser_error) {
-    glue::glue('Rscript duration.R <date_old> <date_new>')
+    glue::glue('Rscript duration.R <date_old> <date_new>
+               e.g. Rscript duration.R 1990-01-01 2008-08-08')
 } else {
     if (!verbose) {
         glue::glue('{time_diff}')
