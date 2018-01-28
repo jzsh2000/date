@@ -1,3 +1,20 @@
 #!/usr/bin/env bash
 
-Rscript r-script/duration.R $@
+if [ "$1" == '-h' ] || [ "$1" == '--help' ]; then
+    cat << EOF
+### number of days past since the \`BASE\` date
+./duration
+
+or
+
+### number of days past since 1990-01-01
+./duration 1990-01-01
+
+or
+
+### number of weeks and days past since 1990-01-01
+./duration -v 1990-01-01
+EOF
+else
+    Rscript r-script/duration.R $@
+fi
