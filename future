@@ -1,3 +1,20 @@
 #!/usr/bin/env bash
 
-Rscript r-script/future.R $@
+if [ "$1" == '-h' ] || [ "$1" == '--help' ]; then
+    cat << EOF
+### 10000 days after the \`BASE\` date
+./future 10000
+
+or
+
+### 10000 days after 1990-01-01
+./future 1990-01-01
+
+or
+
+### 20000 days after 1990-01-01
+./future 1990-01-01 20000
+EOF
+else
+    Rscript r-script/future.R $@
+fi
