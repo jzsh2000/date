@@ -26,7 +26,7 @@ Use the script
 
     or
 
-    ### number of weeks and days past since 1990-01-01
+    ### number of years, months, and days past since 1990-01-01
     ```bash
     ./duration -v 1990-01-01
     ```
@@ -43,6 +43,11 @@ Use the script
     ### 10000 days after 1990-01-01
     ```bash
     ./future 1990-01-01
+    ```
+
+    ### number of days from now correspond to 10000 days after 1990-01-01
+    ```bash
+    ./future -v 1990-01-01
     ```
 
     or
