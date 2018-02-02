@@ -57,6 +57,12 @@ Use the script
     ./future 1990-01-01 20000
     ```
 
+3. get the date of today
+
+    ```bash
+    ./today
+    ```
+
 Dependencies
 ------------
 

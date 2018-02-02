@@ -1,4 +1,15 @@
 get_diff_ymd <- function(date_new, date_old) {
+
+    string2date <- function(str) {
+        if (class(str) != 'Date') {
+            return(lubridate::ymd(str))
+        } else {
+            return(str)
+        }
+    }
+    date_old = string2date(date_old)
+    date_new = string2date(date_new)
+
     reversed <- FALSE
     reverse_date <- function() {
         date_tmp <- date_old
